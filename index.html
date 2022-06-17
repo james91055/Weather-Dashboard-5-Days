@@ -11,7 +11,7 @@
     <link
       rel="stylesheet"
       href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
-    />
+    />  
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Weather Dashboard</title>
   </head>
@@ -20,18 +20,21 @@
     <header class="container-fluid text center text-white bg-dark p-2">
       <h1>Weather Dashboard</h1>
     </header>
-<div class= "container-fluid">
-<div class = "row">
-<div class = "col-lg-3 bg-light">
-<h4 class ="mt-1" Search for a City:></h4>
-<input id = "enter-city" type = "text" class="form-control" placeholder = "Los Angeles" aria-label = "Enter a City">
-
-
-
+    <div class= "container-fluid">
+      <div class = "row">
+        <div class = "col-lg-3 bg-light">
+          <h4 class ="mt-1" Search for a City:></h4>
+          <div class = "input-group mb-3"
+          <input id = "enter-city" type = "text" class="form-control" placeholder = "Los Angeles" aria-label = "Enter a City">
+          <div class = "input-group-append"
+            <button class = "btn btn-primary" type = "button" id ="search-burron">
+               <i class = "fas fa-search"></i>
+            </button>
+          </div>
+           <button class = "btn btn-primary mb-3"    type = "button" id="claer-history">Clear history</button>
+          <form id = "history"></form>
 
 </div>
-
-
 
 
 </div>
