@@ -28,28 +28,38 @@ function initPage() {
     });
   }
 
-  searchEl.addEventListener("click",function(){
+  searchEl.addEventListener("click", function () {
     const searchTerm = cityEl.value;
     getWeather(searchTerm);
     searchHistory.push(searchTerm);
     localStorage.setItem("search", JSON.stringify(searchHistory));
     renderSearchHistory();
+  });
 
-  })
-
-  clearEl.addEventListner("click", fucntion(){
+  clearEl.addEventListner("click", function () {
     localStorage.clear();
-        searchHistory =[];
-        renderSearchHistory();
-  })
+    searchHistory = [];
+    renderSearchHistory();
+  });
 
+  function renderSearchHistory() {
+    historyEl.innerHTML = "";
+    for (let i = 0; i < searchHistory.length; i++) {
+      const historyItem = document.createElement("input");
+      historyItem.setAttribute("type", "text");
+      historyItem.setAttribute("class", "form-control d-block bh-white");
+      historyItem.setAttribute("readonly", "true");
+      historyItem.setAttribute("value", "searchHistory[i]");
+      historyItem.addEventListner("click", function () {
+        getWeather(historyItem.value);
+      });
+      historyEl.append(historyItem);
+    }
+  }
 
-  
-
-
-
-
-
-
+  renderSearchHistory();
+  if (searchHistory.length > 0) {
+    getWeather(searchHistory[searchHistory.length - 1]);
+  }
 }
 initPage();
