@@ -11,6 +11,8 @@ function initPage() {
   const historyEl = document.getElementById("history");
   var fivedayEl = document.getElementById("fiveday-header");
   var todayweatherEl = document.getElementById("today-weather");
+
+  // JSON parse out data or none
   let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
   const apiKey = "cab8b3baccc88a08e21c54a50cd5bdb3";
@@ -65,7 +67,7 @@ function initPage() {
         } else {
           UVIndex.setAttribute("class", "badge badge-danger");
         }
-        console.log(response.data[0].value);
+
         UVIndex.innerHTML = response.data[0].value;
         currentUVEl.innerHTML = "UV Index: ";
         currentUVEl.append(UVIndex);
@@ -150,9 +152,9 @@ function initPage() {
     for (let i = 0; i < searchHistory.length; i++) {
       const historyItem = document.createElement("input");
       historyItem.setAttribute("type", "text");
-      historyItem.setAttribute("class", "form-control d-block bh-white");
+      historyItem.setAttribute("class", "form-control d-block bg-white");
       historyItem.setAttribute("readonly", "true");
-      historyItem.setAttribute("value", "searchHistory[i]");
+      historyItem.setAttribute("value", searchHistory[i]);
       historyItem.addEventListener("click", function () {
         getWeather(historyItem.value);
       });
