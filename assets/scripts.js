@@ -13,7 +13,7 @@ function initPage() {
   var todayweatherEl = document.getElementById("today-weather");
   let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
 
-  const apiKey = "da15cdae26c7c2245f032f9d07a7a1cd";
+  const apiKey = "cab8b3baccc88a08e21c54a50cd5bdb3";
 
   function getWeather(cityName) {
     // Execute a current weather get request from open weather api
@@ -77,10 +77,9 @@ function initPage() {
         "https://api.openweathermap.org/data/2.5/forecast?id=" +
         cityID +
         "&appid=" +
-        APIKey;
+        apiKey;
       axios.get(forecastQueryURL).then(function (response) {
         fivedayEl.classList.remove("d-none");
-
         //  Parse response to display forecast for next 5 days
         const forecastEls = document.querySelectorAll(".forecast");
         for (i = 0; i < forecastEls.length; i++) {
@@ -136,7 +135,7 @@ function initPage() {
     renderSearchHistory();
   });
 
-  clearEl.addEventListner("click", function () {
+  clearEl.addEventListener("click", function () {
     localStorage.clear();
     searchHistory = [];
     renderSearchHistory();
@@ -154,7 +153,7 @@ function initPage() {
       historyItem.setAttribute("class", "form-control d-block bh-white");
       historyItem.setAttribute("readonly", "true");
       historyItem.setAttribute("value", "searchHistory[i]");
-      historyItem.addEventListner("click", function () {
+      historyItem.addEventListener("click", function () {
         getWeather(historyItem.value);
       });
       historyEl.append(historyItem);
